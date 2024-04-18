@@ -342,9 +342,9 @@ Solve Exercise 8 here:
 // for(let i = 0; i < game.party.length; i++) {
 //   for(let j = 0; j < pokemon.length; j++) {
 //     if (pokemon[j].name === game.party[i].name) {
-//       // console.log('Evolving Pokemon...', game.party[i].name)
-//       // console.log('new Poke!', pokemon[j + 1])
-//       // game.party.splice(i, 1, pokemon[j + 1])
+//       console.log('Evolving Pokemon...', game.party[i].name)
+//       console.log('new Poke!', pokemon[j + 1])
+//       game.party.splice(i, 1, pokemon[j + 1])
     
 //     }
 //   }
@@ -500,63 +500,376 @@ After writing this method, call it and pass in a Pokemon object of your choice f
 Solve Exercise 11 here:
 */
 
-const pokemon = require('./data.js')
+//  const pokemon = require('./data.js')
 
- const game = {
-     party: [],
-     gyms: [
-       { location: "Pewter City", completed: false, difficulty: 1 },
-       { location: "Cerulean City", completed: false, difficulty: 2 },
-       { location: "Vermilion City", completed: false, difficulty: 3 },
-       { location: "Celadon City", completed: false, difficulty: 4 },
-       { location: "Fuchsia City", completed: false, difficulty: 5 },
-       { location: "Saffron City", completed: false, difficulty: 6 },
-       { location: "Cinnabar Island", completed: false, difficulty: 7 },
-       { location: "Viridian City", completed: false, difficulty: 8 },
-     ],
-    items: [
-       { name: "potion", quantity: 4 },
-       { name: "pokeball", quantity: 8 },
-       { name: "rare candy", quantity: 99 },
-     ],
-     difficulty: "medium"
-  }
+//  const game = {
+//      party: [],
+//      catchPokemon: function(pokemonObj) {
+//       game.party.push(pokemonObj); 
+//         },
+//      gyms: [
+//       { location: "Pewter City", completed: false, difficulty: 1 },
+//       { location: "Cerulean City", completed: false, difficulty: 2 },
+//       { location: "Vermilion City", completed: false, difficulty: 3 },
+//       { location: "Celadon City", completed: false, difficulty: 4 },
+//       { location: "Fuchsia City", completed: false, difficulty: 5 },
+//       { location: "Saffron City", completed: false, difficulty: 6 },
+//       { location: "Cinnabar Island", completed: false, difficulty: 7 },
+//       { location: "Viridian City", completed: false, difficulty: 8 },
+//       ],
+//      items: [
+//         { name: "potion", quantity: 4 },
+//         { name: "pokeball", quantity: 8 },
+//         { name: "rare candy", quantity: 99 },
+//       ],
+//       difficulty: "medium"
+      
+//    }
 
-  const Pikachu = pokemon.find(pokemon => pokemon.name === "Pikachu");
- if (Pikachu) {
-    game.party.push(Pikachu);
- }
+//    const Pikachu = pokemon.find(pokemon => pokemon.name === "Pikachu");
+//   if (Pikachu) {
+//      game.party.push(Pikachu);
+//   }
 
-   const Nidoking = pokemon.find(pokemon => pokemon.name === "Nidoking");
- if (Nidoking) {
-   game.party.push(Nidoking)
- }
+//     const Nidoking = pokemon.find(pokemon => pokemon.name === "Nidoking");
+//   if (Nidoking) {
+//     game.party.push(Nidoking)
+//   }
 
-   const Jigglypuff = pokemon.find(pokemon => pokemon.name === "Jigglypuff");
- if (Jigglypuff) {
-   game.party.push(Jigglypuff)
- }
+//     const Jigglypuff = pokemon.find(pokemon => pokemon.name === "Jigglypuff");
+//   if (Jigglypuff) {
+//     game.party.push(Jigglypuff)
+//   }
 
-   const Charizard = pokemon.find(pokemon => pokemon.name === "Charizard");
- if (Charizard) {
-   game.party.push(Charizard) 
- }
+//     const Charizard = pokemon.find(pokemon => pokemon.name === "Charizard");
+//   if (Charizard) {
+//     game.party.push(Charizard) 
+//   }
 
- game.gyms.forEach(gym => {
-   if (gym.difficulty < 3) {
-       gym.completed = true;
-   }
- });
+//   game.gyms.forEach(gym => {
+//     if (gym.difficulty < 3) {
+//         gym.completed = true;
+//     }
+//   });
   
- console.log("Starter Pokémon:");
- const starterPokemon = [];
+//   console.log("Starter Pokémon:");
+//   const starterPokemon = [];
  
- pokemon.forEach(pokemon => {
-   if (pokemon.starter) {
-     starterPokemon.push(pokemon.name);
-   }
- });
+//   pokemon.forEach(pokemon => {
+//     if (pokemon.starter) {
+//       starterPokemon.push(pokemon.name);
+//     }
+//   });
  
- console.log(starterPokemon);
+//   const pokemonToCatch = pokemon.find(pokemon => pokemon.name === "Metapod");
+//   if (pokemonToCatch) {
+//       game.catchPokemon(pokemonToCatch);
+//   }
+  
+//  console.log(game.party)
 
  
+ 
+ 
+
+ /*
+Exercise 12
+1. Copy the `catchPokemon` method that you just wrote above, and paste it below. Modify it so that it also decreases the number of pokeballs in your inventory each time you catch a Pokémon.
+2. How will you find and update the quantity of pokeballs in the `game.items` array?
+
+Tips:
+For this exercise, it's okay to have a negative number of pokeballs.
+After updating the method, call it and pass in a Pokemon object of your choice from the `pokemon` data to catch it.
+Also, log the `game.items` array to confirm that the pokeball quantity is being decremented.
+
+Solve Exercise 12 here:
+*/
+// const pokemon = require('./data.js')
+
+// const game = {
+//   party: [],
+//   items: [
+//       { name: "potion", quantity: 4 },
+//       { name: "pokeball", quantity: 8 },
+//       { name: "rare candy", quantity: 99 },
+//   ],
+//   catchPokemon: function(pokemonObj) {
+      
+//       const pokeballIndex = game.items.findIndex(item => item.name === "pokeball");
+//       if (pokeballIndex !== -1) {
+//           game.items[pokeballIndex].quantity--;
+//       }
+      
+      
+//       game.party.push(pokemonObj);
+//   },
+// };
+
+
+// const pokemonToCatch = pokemon.find(pokemon => pokemon.name === "Metapod");
+// if (pokemonToCatch) {
+//   game.catchPokemon(pokemonToCatch);
+// }
+
+
+// console.log(game.items);
+
+/*
+Exercise 13
+1. Similar to Exercise 7, now complete gyms with a difficulty below 6. How will you approach this?
+ (change the value of `complete` in the qualifying objects from false to true).
+
+Solve Exercise 13 here:
+*/
+
+
+// const pokemon = require('./data.js')
+// const game = {
+//   party: [],
+//   gyms: [
+//       { location: "Pewter City", completed: false, difficulty: 1 },
+//       { location: "Cerulean City", completed: false, difficulty: 2 },
+//       { location: "Vermilion City", completed: false, difficulty: 3 },
+//       { location: "Celadon City", completed: false, difficulty: 4 },
+//       { location: "Fuchsia City", completed: false, difficulty: 5 },
+//       { location: "Saffron City", completed: false, difficulty: 6 },
+//       { location: "Cinnabar Island", completed: false, difficulty: 7 },
+//       { location: "Viridian City", completed: false, difficulty: 8 },
+//   ],
+//   items: [
+//       { name: "potion", quantity: 4 },
+//       { name: "pokeball", quantity: 8 },
+//       { name: "rare candy", quantity: 99 },
+//   ],
+//   difficulty: "medium",
+//   catchPokemon: function(pokemonObj) {
+
+//       const pokeballIndex = this.items.findIndex(item => item.name === "pokeball");
+//       if (pokeballIndex !== -1) {
+//           this.items[pokeballIndex].quantity--;
+//       }
+      
+
+//       this.party.push(pokemonObj);
+//   },
+// };
+
+
+// game.gyms.forEach(gym => {
+//   if (gym.difficulty < 6) {
+//       gym.completed = true;
+//   }
+// });
+
+
+// console.log(game.gyms);
+
+
+/*
+Exercise 14
+1. Create a `gymStatus` method in `game` to tally completed and incomplete gyms.
+2. How will you iterate through the `gyms` array and update the tally? Remember to log the final tally.
+
+This method should:
+  - Not accept any arguments.
+  - Initially create a constant `gymTally`, which is an object that has two 
+    properties: `completed` and `incomplete`, both of which are initially set to 0.
+  - Iterate through the objects in the `game.gyms` array and update the 
+    properties on `gymTally` as follows: 
+    - `completed` should count how many gyms in the array have a value of `true` 
+      for their `completed` property. 
+    - `incomplete` should count how many gyms in the array have a value of 
+      `false` for their `completed` property.
+  - Log the value of `gymTally`.
+  - The method should not return anything.
+
+For example, if five gym objects have a value of `true` on their `completed` property and three gym objects have a value of `false` on their `completed` property, the logged value would be: `{ completed: 5, incomplete: 3 }`.
+
+Solve Exercise 14 here:
+*/
+// const pokemon = require('./data.js')
+// const game = {
+//   party: [],
+//   gyms: [
+//     { location: "Pewter City", completed: false, difficulty: 1 },
+//     { location: "Cerulean City", completed: true, difficulty: 2 },
+//     { location: "Vermilion City", completed: false, difficulty: 3 },
+
+//   ],
+//   items: [
+//     { name: "potion", quantity: 4 },
+//     { name: "pokeball", quantity: 8 },
+//     { name: "rare candy", quantity: 99 },
+//   ],
+//   catchPokemon: function(pokemonObj) {
+
+//     const pokeballIndex = this.items.findIndex(item => item.name === "pokeball");
+//     if (pokeballIndex !== -1) {
+//       this.items[pokeballIndex].quantity--;
+//     }
+    
+
+//     this.party.push(pokemonObj);
+//   },
+//   gymStatus: function() {
+
+//     const gymTally = { completed: 0, incomplete: 0 };
+    
+
+//     this.gyms.forEach(gym => {
+//       if (gym.completed) {
+//         gymTally.completed++;
+//       } else {
+//         gymTally.incomplete++;
+//       }
+//     });
+    
+
+//     console.log(gymTally);
+//   }
+// };
+
+
+// game.gymStatus();
+
+
+/*
+Exercise 15
+1. Add a `partyCount` method to `game` that counts the number of Pokémon in your party.
+
+This method should:
+  - Not accept any arguments.
+  - Count the number of Pokemon in the party.
+  - return the found number of Pokemon in the party.
+
+Solve Exercise 15 here:
+*/
+
+// const game = {
+//   party: [],
+//   gyms: [
+//     { location: "Pewter City", completed: false, difficulty: 1 },
+//     { location: "Cerulean City", completed: true, difficulty: 2 },
+//     { location: "Vermilion City", completed: false, difficulty: 3 },
+
+//   ],
+//   items: [
+//     { name: "potion", quantity: 4 },
+//     { name: "pokeball", quantity: 8 },
+//     { name: "rare candy", quantity: 99 },
+//   ],
+//   catchPokemon: function(pokemonObj) {
+
+//     const pokeballIndex = this.items.findIndex(item => item.name === "pokeball");
+//     if (pokeballIndex !== -1) {
+//       this.items[pokeballIndex].quantity--;
+//     }
+    
+
+//     this.party.push(pokemonObj);
+//   },
+//   gymStatus: function() {
+
+//     const gymTally = { completed: 0, incomplete: 0 };
+    
+
+//     this.gyms.forEach(gym => {
+//       if (gym.completed) {
+//         gymTally.completed++;
+//       } else {
+//         gymTally.incomplete++;
+//       }
+//     });
+    
+
+//     console.log(gymTally);
+//   },
+//   partyCount: function() {
+
+//     return this.party.length;
+//   }
+// };
+
+
+// const partySize = game.partyCount();
+// console.log("Number of Pokémon in the party:", partySize);
+
+/*
+Exercise 16
+1. Now, complete gyms with a difficulty below 8. Reflect on how this is similar to or different from the previous gym exercises.
+(change the value of `complete` in the qualifying objects from false to true).
+
+Solve Exercise 16 here:
+*/
+
+
+const game = {
+  party: [],
+  gyms: [
+    { location: "Pewter City", completed: false, difficulty: 1 },
+    { location: "Cerulean City", completed: false, difficulty: 2 },
+    { location: "Vermilion City", completed: false, difficulty: 3 },
+    { location: "Celadon City", completed: false, difficulty: 4 },
+    { location: "Fuchsia City", completed: false, difficulty: 5 },
+    { location: "Saffron City", completed: false, difficulty: 6 },
+    { location: "Cinnabar Island", completed: false, difficulty: 7 },
+    { location: "Viridian City", completed: false, difficulty: 8 },
+  ],
+  items: [
+    { name: "potion", quantity: 4 },
+    { name: "pokeball", quantity: 8 },
+    { name: "rare candy", quantity: 99 },
+  ],
+  catchPokemon: function(pokemonObj) {
+   
+    const pokeballIndex = this.items.findIndex(item => item.name === "pokeball");
+    if (pokeballIndex !== -1) {
+      this.items[pokeballIndex].quantity--;
+    }
+    
+    
+    this.party.push(pokemonObj);
+  },
+  gymStatus: function() {
+    
+    const gymTally = { completed: 0, incomplete: 0 };
+    
+    
+    this.gyms.forEach(gym => {
+      if (gym.completed) {
+        gymTally.completed++;
+      } else {
+        gymTally.incomplete++;
+      }
+    });
+    
+   
+    console.log(gymTally);
+  },
+  partyCount: function() {
+    
+    return this.party.length;
+  }
+};
+
+
+game.gyms.forEach(gym => {
+  if (gym.difficulty < 8) {
+    gym.completed = true;
+  }
+});
+
+
+console.log("Updated Gym Status:");
+game.gymStatus();
+
+
+/*
+Exercise 17
+1. Log the entire `game` object to the console. Take a moment to review the changes you've made throughout the exercises.
+
+
+Solve Exercise 17 here:
+*/
+
+console.log(game)
